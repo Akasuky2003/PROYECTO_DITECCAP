@@ -29,6 +29,7 @@ const Home: NextPage = () => {
           </div>
           <div className="col-6 auth-widget">
             <Auth
+              providers={["github", "google", "facebook"]}
               supabaseClient={supabase}
               appearance={{ theme: ThemeSupa }}
               theme="dark"
