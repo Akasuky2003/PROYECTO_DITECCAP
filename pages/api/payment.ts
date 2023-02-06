@@ -1,5 +1,6 @@
 import mercadopago from "mercadopago";
 import { NextApiRequest, NextApiResponse } from "next";
+import NextCors from 'nextjs-cors';
 import sendSMS from "@/services/twilio";
 import { getPhone } from "@/services/supabase";
 
@@ -8,6 +9,13 @@ mercadopago.configure({
 });
 
 export default async function paymentMercadoPago(req: NextApiRequest, res: NextApiResponse) {
+
+    await NextCors(req, res, {
+        methods: ['POST'],
+        origin: '*',
+        optionsSuccessStatus: 200,
+     });
+
     if (req.method === "POST") {
         try {
             const { body } = await mercadopago.payment.save(req.body);
