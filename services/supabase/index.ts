@@ -1,25 +1,35 @@
 import { createClient } from "@supabase/supabase-js";
+import { Database } from "@/utils/database.types";
 
-
-export const supabase = createClient(
+const supabase = createClient(
     String(process.env.NEXT_PUBLIC_SUPABASE_URL),
     String(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
 );
 
+type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
-// export async function getName() {
-//     const { data: Personal, error } = await supabase.from('Personal').select('name')
-//     console.log(await supabase.from('Personal').select('name'))
-//     return Personal
-// }
+export async function getPhone() {
+    const user = await getCurrentUser()
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('phone')
+        .eq("user_id", user?.user.id)
 
-// export async function getCurrentUser() {
-//     const { data, error } = await supabase.auth.getUser();
+    if (error) {
+        console.log("Error", error);
+        return [];
+    }
 
-//     if (error) {
-//         console.log("Error", error);
-//         return;
-//     }
+    return data || [];
+}
 
-//     return data;
-// }
+async function getCurrentUser() {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error) {
+        console.log("Error", error);
+        return;
+    }
+
+    return data;
+}

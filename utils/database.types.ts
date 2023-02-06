@@ -15,9 +15,9 @@ export interface Database {
           updated_at: string | null;
           username: string | null;
           full_name: string | null;
-          dni: string | null;
+          dni: number | null;
           genre: string | null;
-          birth_date: string | null;
+          birth_date: Date | null;
           phone: string | null;
           avatar_url: string | null;
           website: string | null;
@@ -27,9 +27,9 @@ export interface Database {
           updated_at?: string | null;
           username?: string | null;
           full_name?: string | null;
-          dni?: string | null;
+          dni?: number | null;
           genre?: string | null;
-          birth_date?: string | null;
+          birth_date?: Date | null;
           phone?: string | null;
           avatar_url?: string | null;
           website?: string | null;
@@ -39,10 +39,11 @@ export interface Database {
           updated_at?: string | null;
           username?: string | null;
           full_name?: string | null;
-          dni?: string | null;
+          dni?: number | null;
           phone?: string | null;
           avatar_url?: string | null;
           website?: string | null;
+          birth_date?: Date | null;
         };
       };
     };
