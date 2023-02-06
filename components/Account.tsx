@@ -7,6 +7,7 @@ import {
 import Avatar from "./Avatar";
 
 import { Database } from "../utils/database.types";
+import { toDateTime } from "@/utils/helpers";
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Account({ session }: { session: Session }) {
@@ -18,9 +19,10 @@ export default function Account({ session }: { session: Session }) {
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const [dni, setDNI] = useState<Profiles["dni"]>(null);
   const [phone, setPhone] = useState<Profiles["phone"]>(null);
-  const [birthDate, setBirthDate] = useState<Profiles["birth_date"]>(null);
+  const [birthdate, setBirthdate] = useState<Profiles["birth_date"]>(null);
   const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
 
+  const current = new Date().toISOString().split("T")[0];
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -48,7 +50,7 @@ export default function Account({ session }: { session: Session }) {
         setAvatarUrl(data.avatar_url);
         setPhone(data.phone);
         setDNI(data.dni);
-        setBirthDate(data.birth_date);
+        setBirthdate(data.birth_date);
         setFullName(data.full_name);
       }
     } catch (error) {
@@ -66,6 +68,7 @@ export default function Account({ session }: { session: Session }) {
     full_name,
     dni,
     phone,
+    birthdate,
   }: {
     username: Profiles["username"];
     website: Profiles["website"];
@@ -73,6 +76,7 @@ export default function Account({ session }: { session: Session }) {
     full_name: Profiles["full_name"];
     dni: Profiles["dni"];
     phone: Profiles["phone"];
+    birthdate: Profiles["birth_date"];
   }) {
     try {
       setLoading(true);
@@ -86,6 +90,7 @@ export default function Account({ session }: { session: Session }) {
         full_name,
         dni,
         phone,
+        birthdate,
         updated_at: new Date().toISOString(),
       };
 
@@ -114,6 +119,7 @@ export default function Account({ session }: { session: Session }) {
             full_name,
             dni,
             phone,
+            birthdate,
             avatar_url: url,
           });
         }}
@@ -124,29 +130,37 @@ export default function Account({ session }: { session: Session }) {
       </div>
       <div>
         <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <input id="username" type="text" value={username || ""} disabled />
       </div>
       <div>
         <label htmlFor="dni">DNI</label>
         <input
           id="dni"
           type="text"
+          pattern="[0-9]{9}"
           value={dni || ""}
-          onChange={(e) => setDNI(e.target.value)}
+          onChange={(e) => setDNI(Number(e.target.value))}
         />
       </div>
       <div>
         <label htmlFor="phone">Telefono</label>
         <input
           id="phone"
-          type="string"
+          type="tel"
+          pattern="[0-9]{9}"
           value={phone || ""}
-          onChange={(e) => setPhone(e.target.value)}
+          onChange={(e) => setPhone(Number(e.target.value))}
+        />
+      </div>
+      <div>
+        <label htmlFor="birthdate">Fecha de nacimiento</label>
+        <input
+          id="birthdate"
+          min="1923-01-01"
+          max={current}
+          type="date"
+          value={birthdate ? birthdate.toISOString().substring(0, 10) : ""}
+          onChange={(e) => setBirthdate(new Date(e.target.value))}
         />
       </div>
       <div>
@@ -170,6 +184,7 @@ export default function Account({ session }: { session: Session }) {
               full_name,
               dni,
               phone,
+              birthdate,
             })
           }
           disabled={loading}
