@@ -13,7 +13,7 @@ export async function getPhone() {
     const { data, error } = await supabase
         .from('Personal')
         .select('phone')
-        .eq("id", 1)
+        .eq("id", 5)
         // .eq("user_id", user?.user.id)
 
     if (error) {
