@@ -25,6 +25,7 @@ export default async function paymentMercadoPago(req: NextApiRequest, res: NextA
             const phone = await getPhone()
 
             if (status === "approved") {
+                console.log(phone)
                 sendSMS(phone[0].phone, transaction_amount)
             }
 
