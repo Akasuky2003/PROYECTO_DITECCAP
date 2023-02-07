@@ -21,6 +21,7 @@ export default function Home() {
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
             <Link href="/signin">Sign in</Link>
+            <Link href="/products">Productos</Link>
           </p>
           <div>
             <a

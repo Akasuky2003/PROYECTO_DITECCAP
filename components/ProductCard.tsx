@@ -1,4 +1,3 @@
-
 import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -66,7 +65,6 @@ export default function ProductCard({ product }: Props): React.ReactElement {
         }
 
         localStorage.setItem('cart', JSON.stringify(cart))
-        console.log("cart", cart)
     }
 
     return (

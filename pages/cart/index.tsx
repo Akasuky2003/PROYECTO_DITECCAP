@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import products from "@/services/products";
 import dynamic from "next/dynamic";
 
@@ -107,6 +108,7 @@ export default function Cart() {
                                 }}>
                                 <h2>Pago</h2>
                                 <hr />
+                                <div id="cardPaymentBrick_container"></div>
                             </div>
                             <div className="col-md-6" style={{
                                 width: "40%"
@@ -164,7 +166,8 @@ export default function Cart() {
                             </div>
                         </div>
                     </div>
-            }
+            } 
+            <Script src="../../index.js"/>           
         </>
     )
 }
