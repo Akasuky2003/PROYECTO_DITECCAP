@@ -5,7 +5,7 @@ import sendSMS from "@/services/twilio";
 import { getPhone } from "@/services/supabase";
 
 mercadopago.configure({
-    access_token: String(process.env.MERCADOPAGO_ACCESS_TOKEN)
+    access_token: String(process.env.MERCADO_PAGO_SAMPLE_ACCESS_TOKEN)
 });
 
 export default async function paymentMercadoPago(req: NextApiRequest, res: NextApiResponse) {
