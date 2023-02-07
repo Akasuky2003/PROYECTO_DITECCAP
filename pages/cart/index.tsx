@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import products from "@/services/products";
 import dynamic from "next/dynamic";
@@ -14,24 +14,39 @@ interface Displaycart {
     name: string
 }
 
+interface Product {
+    id: number
+    imageSrc: string
+    imageAlt: string
+    href: string
+    name: string
+    color: string
+    price: number
+    currency: string
+}
+
 export default function Cart() {
 
     const [cartItems, setCartItems] = useState<Displaycart[]>([])
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
     const [total, setTotal] = useState<number>(0)
+    const [cartId, setCartId] = useState<string>("")
 
-    useEffect(()=>{
-        if (cartItems.length == 0){
+    useEffect(() => {
+
+        if (cartItems.length == 0) {
             return
         }
 
         const t = cartItems.reduce((sum, item: Displaycart) => {
-            if (item.inStock){
-                sum = sum + item.price
+            if (item.inStock) {
+                sum = sum + item.price * item.qty
                 return sum
             }
-            
         }, 0)
+
+        setTotal(t)
+
     }, [cartItems])
 
     useEffect(() => {
@@ -42,6 +57,8 @@ export default function Cart() {
         }
 
         const cart = JSON.parse(cs)
+
+        setCartId(cart.cid)
 
         let cartItemsArray = cart.products.map((cartItem: {
             id: number
@@ -59,16 +76,95 @@ export default function Cart() {
             }
         }
         )
-        console.log(cartItemsArray)
         setCartItems(cartItemsArray)
 
     }, [])
-    return (
-        <div>
-            <div className="container mt-3">
-                <h1 className="center">Carrito de compras</h1>
-            </div>
-        </div>
 
+    function removeItem(id: number) {
+        const newCart = cartItems.filter(ci => ci.id != id)
+        setCartItems(newCart)
+        const cart = {
+            cid: cartId,
+            products: newCart.map(item => ({ id: item.id, qty: item.qty }))
+        }
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
+
+
+    return (
+        <>
+            <Head>
+                <title>Pago</title>
+            </Head>
+            {
+                isEmpty ? <Title>No hay productos agregados</Title> :
+                    <div className="container-fluid">
+                        <h1 className="center">Carrito de compras</h1>
+                        <div className="row mt-5 flex flex-center">
+                            <div className="col-md-6"
+                                style={{
+                                    width: "40%"
+                                }}>
+                                <h2>Pago</h2>
+                                <hr />
+                            </div>
+                            <div className="col-md-6" style={{
+                                width: "40%"
+                            }}>
+                                <h2>Productos pedidos</h2>
+                                <hr />
+                                {cartItems.map(item => (item.inStock ?
+                                    <div className="card mb-3">
+                                        <div className="card-body">
+                                            <div className="row">
+                                                <div className="col-8">
+                                                    <h3>{item.name}</h3>
+                                                </div>
+                                                <div className="col-2">
+                                                    <h3>{item.currency} {item.price}</h3>
+                                                </div>
+                                                <div className="col-2">
+                                                    <h3>x {item.qty}</h3>
+                                                </div>
+                                                <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <div className="row">
+                                                <div className="col-6">
+                                                    <p>{item.name} no está disponible en nuestro stock</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                )
+                                )
+                                }
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                <h3>Total</h3>
+                                            </div>
+                                            <div
+                                                className="col-6"
+                                                style={{
+                                                    textAlign: "right",
+                                                }}
+                                            >
+                                                <h3>{total}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+        </>
     )
 }

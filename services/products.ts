@@ -13,7 +13,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Producto 1",
+    name: "Producto 2",
     href: '#',
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
@@ -25,7 +25,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Producto 1",
+    name: "Producto 3",
     href: '#',
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
@@ -33,11 +33,11 @@ const products = [
     price: 35,
     currency: "$",
     color: 'Black',
-    stock: 10
+    stock: 0
   },
   {
     id: 4,
-    name: "Producto 1",
+    name: "Producto 4",
     href: '#',
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
@@ -49,7 +49,7 @@ const products = [
   },
   {
     id: 5,
-    name: "Producto 1",
+    name: "Producto 5",
     href: '#',
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
@@ -61,7 +61,7 @@ const products = [
   },
   {
     id: 6,
-    name: "Producto 1",
+    name: "Producto 6",
     href: '#',
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",

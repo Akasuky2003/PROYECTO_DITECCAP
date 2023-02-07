@@ -20,7 +20,7 @@ const Home: NextPage = () => {
       <Link href="/cart">
         <Button>Ir al carrito de compras</Button>
       </Link>
-      <div className="container fluid mt-3">
+      <div className="container mt-3">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
