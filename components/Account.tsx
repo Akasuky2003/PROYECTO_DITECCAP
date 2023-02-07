@@ -7,7 +7,6 @@ import {
 import Avatar from "./Avatar";
 
 import { Database } from "../utils/database.types";
-import { toDateTime } from "@/utils/helpers";
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Account({ session }: { session: Session }) {
@@ -15,11 +14,11 @@ export default function Account({ session }: { session: Session }) {
   const user = useUser();
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<Profiles["username"]>(null);
-  const [website, setWebsite] = useState<Profiles["website"]>(null);
+  const [location, setLocation] = useState<Profiles["location"]>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const [dni, setDNI] = useState<Profiles["dni"]>(null);
   const [phone, setPhone] = useState<Profiles["phone"]>(null);
-  const [birthdate, setBirthdate] = useState<Profiles["birth_date"]>(null);
+  const [birthdate, setBirthdate] = useState<Profiles["birthdate"]>(null);
   const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
 
   const current = new Date().toISOString().split("T")[0];
@@ -35,7 +34,7 @@ export default function Account({ session }: { session: Session }) {
       let { data, error, status } = await supabase
         .from("profiles")
         .select(
-          `username, website, avatar_url, dni, genre, birth_date, phone, full_name`
+          `username, location, avatar_url, dni, genre, birthdate, phone, full_name`
         )
         .eq("id", user.id)
         .single();
@@ -46,11 +45,11 @@ export default function Account({ session }: { session: Session }) {
 
       if (data) {
         setUsername(data.username);
-        setWebsite(data.website);
+        setLocation(data.location);
         setAvatarUrl(data.avatar_url);
         setPhone(data.phone);
         setDNI(data.dni);
-        setBirthdate(data.birth_date);
+        setBirthdate(data.birthdate);
         setFullName(data.full_name);
       }
     } catch (error) {
@@ -63,7 +62,7 @@ export default function Account({ session }: { session: Session }) {
 
   async function updateProfile({
     username,
-    website,
+    location,
     avatar_url,
     full_name,
     dni,
@@ -71,12 +70,12 @@ export default function Account({ session }: { session: Session }) {
     birthdate,
   }: {
     username: Profiles["username"];
-    website: Profiles["website"];
+    location: Profiles["location"];
     avatar_url: Profiles["avatar_url"];
     full_name: Profiles["full_name"];
     dni: Profiles["dni"];
     phone: Profiles["phone"];
-    birthdate: Profiles["birth_date"];
+    birthdate: Profiles["birthdate"];
   }) {
     try {
       setLoading(true);
@@ -85,7 +84,7 @@ export default function Account({ session }: { session: Session }) {
       const updates = {
         id: user.id,
         username,
-        website,
+        location,
         avatar_url,
         full_name,
         dni,
@@ -115,7 +114,7 @@ export default function Account({ session }: { session: Session }) {
           setAvatarUrl(url);
           updateProfile({
             username,
-            website,
+            location,
             full_name,
             dni,
             phone,
@@ -139,7 +138,7 @@ export default function Account({ session }: { session: Session }) {
           type="text"
           pattern="[0-9]{9}"
           value={dni || ""}
-          onChange={(e) => setDNI(Number(e.target.value))}
+          onChange={(e) => setDNI(e.target.value)}
         />
       </div>
       <div>
@@ -149,7 +148,7 @@ export default function Account({ session }: { session: Session }) {
           type="tel"
           pattern="[0-9]{9}"
           value={phone || ""}
-          onChange={(e) => setPhone(Number(e.target.value))}
+          onChange={(e) => setPhone(e.target.value)}
         />
       </div>
       <div>
@@ -159,17 +158,17 @@ export default function Account({ session }: { session: Session }) {
           min="1923-01-01"
           max={current}
           type="date"
-          value={birthdate ? birthdate.toISOString().substring(0, 10) : ""}
+          value={birthdate ? `${birthdate}` : ""}
           onChange={(e) => setBirthdate(new Date(e.target.value))}
         />
       </div>
       <div>
-        <label htmlFor="website">Website</label>
+        <label htmlFor="location">Location</label>
         <input
-          id="website"
-          type="website"
-          value={website || ""}
-          onChange={(e) => setWebsite(e.target.value)}
+          id="location"
+          type="text"
+          value={location || ""}
+          onChange={(e) => setLocation(e.target.value)}
         />
       </div>
 
@@ -179,7 +178,7 @@ export default function Account({ session }: { session: Session }) {
           onClick={() =>
             updateProfile({
               username,
-              website,
+              location,
               avatar_url,
               full_name,
               dni,
