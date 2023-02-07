@@ -39,12 +39,11 @@ export default function Cart() {
             return
         }
 
-        const t = cartItems.reduce((sum, item: Displaycart) => {
-            if (item.inStock) {
-                sum = sum + item.price * item.qty
-                return sum
-            }
-        }, 0)
+        let t = 0
+
+        for (let i =0; i < cartItems.length; i++){
+            t += cartItems[i].price * cartItems[i].qty
+        }
 
         setTotal(t)
 
@@ -166,8 +165,7 @@ export default function Cart() {
                             </div>
                         </div>
                     </div>
-            } 
-            <Script src="../../index.js"/>           
+            }         
         </>
     )
 }
