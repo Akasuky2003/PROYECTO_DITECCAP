@@ -11,9 +11,10 @@ type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 export async function getPhone() {
     const user = await getCurrentUser()
     const { data, error } = await supabase
-        .from('profiles')
+        .from('Personal')
         .select('phone')
-        .eq("user_id", user?.user.id)
+        .eq("id", 5)
+        // .eq("user_id", user?.user.id)
 
     if (error) {
         console.log("Error", error);

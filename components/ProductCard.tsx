@@ -94,7 +94,7 @@ export default function ProductCard({ product }: Props): React.ReactElement {
                         {product.price}
                     </p>
                 </div>
-                <Button onClick={addToCart}>Add to cart</Button>
+                <button onClick={addToCart}>Add to cart</button>
             </div>
             
     )
