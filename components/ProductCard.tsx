@@ -68,34 +68,34 @@ export default function ProductCard({ product }: Props): React.ReactElement {
     }
 
     return (
-            <div className="group relative">
-                <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                    <div className="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                        <Image
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
-                            width={300}
-                            height={300}
-                        />
-                    </div>
+        <div className="group relative">
+            <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                <div className="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    <Image
+                        src={product.imageSrc}
+                        alt={product.imageAlt}
+                        width={300}
+                        height={300}
+                    />
                 </div>
-                <div className="mt-4 flex justify-between">
-                    <div className="space-y-2">
-                        <h3 className="text-sm text-gray-700">
-                            <a href={product.href}>
-                                <span aria-hidden="true" className="absolute inset-0"></span>
-                                {product.name}
-                            </a>
-                        </h3>
-                        <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                    </div>
+            </div>
+            <div className="mt-4 flex justify-between">
+                <div className="space-y-3">
+                    <h3 className="text-sm text-gray-700">
+                        <a href={product.href}>
+                            <h2>{product.name}</h2>
+                        </a>
+                    </h3>
+                </div>
+                <div className="space-y-3">
                     <p className="text-sm font-medium text-gray-900">
-                        {product.currency}
-                        {product.price}
+                        <h2>{product.currency} {product.price}</h2>
                     </p>
                 </div>
-                <button onClick={addToCart}>Add to cart</button>
+
             </div>
-            
+            <button onClick={addToCart}>Add to cart</button>
+        </div>
+
     )
 }
