@@ -7,7 +7,7 @@ export default function Navbar(){
       <a className={styles.DITECCAP} onClick={() => window.location.href='/index'}>DITECCAP</a>
       </Link>
       <Link legacyBehavior href={"/signin"}>
-      <a className={styles.ingresobutton} onClick={() => window.location.href='/login'}>login</a>
+      <a className={styles.ingresobutton} >login</a>
       </Link>
       
       
