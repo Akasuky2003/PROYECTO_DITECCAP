@@ -5,3 +5,39 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+.container-signin{
+  margin: auto;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  background-color: rgb(241, 221, 198);
+}
+.row {
+  position: relative;
+  width: 100%;
+}
+.row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+.row-center {
+  margin: auto;
+  position: relative;
+  max-width: 65rem;
+}
+.row-center [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+.imagenlog {
+  max-width: 26rem;
+  position: relative;
+  margin: auto;
+  padding-left: 10%;
+  padding-top: 13%;
+  width:fit-content;
+  float: left;
+}
