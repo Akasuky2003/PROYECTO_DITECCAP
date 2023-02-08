@@ -68,7 +68,7 @@ export default function ProductCard({ product }: Props): React.ReactElement {
     }
 
     return (
-        <div className="group relative">
+        <div className="group relative p-3">
             <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                 <div className="h-full w-full object-cover object-center lg:h-full lg:w-full">
                     <Image
@@ -79,8 +79,8 @@ export default function ProductCard({ product }: Props): React.ReactElement {
                     />
                 </div>
             </div>
-            <div className="mt-4 flex justify-between">
-                <div className="space-y-3">
+            <div className="mt-4 flex">
+                <div className="px-3">
                     <h3 className="text-sm text-gray-700">
                         <a href={product.href}>
                             <h2>{product.name}</h2>

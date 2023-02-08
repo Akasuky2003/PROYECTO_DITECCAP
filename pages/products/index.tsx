@@ -15,12 +15,16 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Productos</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"></link>
       </Head>
+      <div className="d-flex justify-content-between p-4">
       <Title>Productos</Title>
       <Link href="/cart">
         <Button>Ir al carrito de compras</Button>
       </Link>
-      <div className="container mt-3">
+      </div>
+
+      <div className="container-fluid flex flex-wrap mt-3">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
