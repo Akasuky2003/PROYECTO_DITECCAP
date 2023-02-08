@@ -35,7 +35,6 @@ const Home: NextPage = () => {
         </>
       )}
 
-      <Footer />
     </div>
   );
 };
