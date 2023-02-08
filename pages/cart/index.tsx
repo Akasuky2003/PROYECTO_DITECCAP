@@ -95,11 +95,12 @@ export default function Cart() {
         <>
             <Head>
                 <title>Pago</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></link>
             </Head>
             {
                 isEmpty ? <Title>No hay productos agregados</Title> :
                     <div className="container-fluid">
-                        <h1 className="center">Carrito de compras</h1>
+                        <h1 className="d-flex justify-content-between p-4">Carrito de compras</h1>
                         <div className="row mt-5 flex flex-center">
                             <div className="col-md-6"
                                 style={{
@@ -118,14 +119,14 @@ export default function Cart() {
                                     <div className="card mb-3">
                                         <div className="card-body">
                                             <div className="row">
-                                                <div className="col-8">
-                                                    <h3>{item.name}</h3>
+                                                <div className="col-6">
+                                                    <h4>{item.name}</h4>
                                                 </div>
-                                                <div className="col-2">
-                                                    <h3>{item.currency} {item.price}</h3>
+                                                <div className="col-3">
+                                                    <h4>{item.currency} {item.price}</h4>
                                                 </div>
-                                                <div className="col-2">
-                                                    <h3>x {item.qty}</h3>
+                                                <div className="col-3">
+                                                    <h4>x {item.qty}</h4>
                                                 </div>
                                                 <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
                                             </div>
