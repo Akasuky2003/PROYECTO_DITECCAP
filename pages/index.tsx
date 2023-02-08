@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <Navbar />
-        <img src="/Paginaprincipal.png" alt="Imagen" />
+        <img style={{height:"auto"}} src="/Paginaprincipal.png" alt="Imagen" />
       </div>
     </>
   );
