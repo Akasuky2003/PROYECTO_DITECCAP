@@ -17,6 +17,11 @@ body {
   font-family: var(--custom-font-family);
   background-color: var(--custom-bg-color);
 }
+#header-login{
+  padding: 0 0 0 1.5em ;
+  font: 2.5em sans-serif;
+  text-align: center;
+}
 
 * {
   color: var(--custom-color);
