@@ -3,24 +3,14 @@ import styles from "@/styles/Home.module.css";
 export default function Navbar() {
   return (
     <div className={styles.navbar}>
-      <Link legacyBehavior href={"/index"}>
-        <a
-          className={styles.DITECCAP}
-          onClick={() => (window.location.href = "/index")}
-        >
-          DITECCAP
-        </a>
+      <Link legacyBehavior href={"/"}>
+        <a className={styles.DITECCAP}>DITECCAP</a>
       </Link>
       <Link legacyBehavior href={"/signin"}>
-        <a
-          className={styles.ingresobutton}
-          onClick={() => (window.location.href = "/signin")}
-        >
-          login
-        </a>
+        <a className={styles.ingresobutton}>login</a>
       </Link>
 
-      <Link legacyBehavior href={"/index"}>
+      <Link legacyBehavior href={"/about"}>
         <a className={styles.quienessomos} style={{ marginLeft: "60px" }}>
           ¿Quienes Somos?
         </a>
