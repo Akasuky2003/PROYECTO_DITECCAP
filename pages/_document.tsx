@@ -10,7 +10,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script src="https://sdk.mercadopago.com/js/v2" />
       </body>
     </Html>
   )
