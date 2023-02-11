@@ -27,9 +27,9 @@ export default async function MP(req: NextApiRequest, res: NextApiResponse) {
                 ],
 
                 back_urls: {
-                    "success": "https://proyectou8.vercel.app/api/feedback",
-                    "failure": "https://proyectou8.vercel.app/cart",
-                    "pending": "https://proyectou8.vercel.app/cart"
+                    "success": "https://proyecto-diteccap.vercel.app/api/feedback",
+                    "failure": "https://proyecto-diteccap.vercel.app/cart",
+                    "pending": "https://proyecto-diteccap.vercel.app/cart"
                 },
                 // auto_return: "approved",
             };
