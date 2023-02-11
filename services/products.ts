@@ -6,7 +6,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 35,
+    price: 10,
     currency: "$",
     color: 'Black',
     stock: 10
@@ -16,9 +16,9 @@ const products = [
     name: "Producto 2",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 35,
+    price: 20,
     currency: "$",
     color: 'Black',
     stock: 10
@@ -28,9 +28,9 @@ const products = [
     name: "Producto 3",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 35,
+    price: 30,
     currency: "$",
     color: 'Black',
     stock: 0
@@ -40,9 +40,9 @@ const products = [
     name: "Producto 4",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 35,
+    price: 40,
     currency: "$",
     color: 'Black',
     stock: 10
@@ -54,7 +54,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 35,
+    price: 50,
     currency: "$",
     color: 'Black',
     stock: 10
@@ -66,7 +66,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: 35,
+    price: 60,
     currency: "$",
     color: 'Black',
     stock: 10
