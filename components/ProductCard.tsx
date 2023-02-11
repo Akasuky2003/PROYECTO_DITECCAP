@@ -68,33 +68,28 @@ export default function ProductCard({ product }: Props): React.ReactElement {
     }
 
     return (
-        <div className="group relative p-3">
-            <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                <div className="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                    <Image
-                        src={product.imageSrc}
-                        alt={product.imageAlt}
-                        width={300}
-                        height={300}
-                    />
-                </div>
-            </div>
-            <div className="mt-4 flex">
-                <div className="px-3">
-                    <h3 className="text-sm text-gray-700">
-                        <a href={product.href}>
-                            <h2>{product.name}</h2>
-                        </a>
-                    </h3>
-                </div>
-                <div className="space-y-3">
-                    <p className="text-sm font-medium text-gray-900">
-                        <h2>{product.currency} {product.price}</h2>
+        <div className="card border m-1">
+            <Image className="card-img-top"
+                src={product.imageSrc}
+                alt={product.name}
+                width = {200}
+                height={200}
+                style={{
+                    objectFit: "contain"
+                }}
+                sizes="100vw"
+                
+            />
+            <div className="card-body">
+                    <h5 className="card-title">
+                        <a className="list-group-item list-group-item-action link-primary" href={product.href}>{product.name}</a>
+                    </h5>
+                    <p className="card-text">
+                        {product.currency} {product.price}
                     </p>
-                </div>
 
             </div>
-            <button onClick={addToCart}>Add to cart</button>
+            <a className="btn btn-primary fs-6 flex justify-content-center" onClick={addToCart}>Agregar al carrito</a>
         </div>
 
     )

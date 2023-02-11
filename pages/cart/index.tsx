@@ -1,8 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import Script from "next/script";
+import Image from "next/image";
+import Link from "next/link";
+import Button from "@/components/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import products from "@/services/products";
 import dynamic from "next/dynamic";
+
 
 const Title = dynamic(() => import("../../components/Title"))
 
@@ -32,17 +38,19 @@ export default function Cart() {
     const [isEmpty, setIsEmpty] = useState<boolean>(false)
     const [total, setTotal] = useState<number>(0)
     const [cartId, setCartId] = useState<string>("")
+    const [url, setUrl] = useState<string>("")
 
     useEffect(() => {
 
         if (cartItems.length == 0) {
+            setTotal(0)
             return
         }
 
         let t = 0
 
-        for (let i =0; i < cartItems.length; i++){
-            t += cartItems[i].price * cartItems[i].qty
+        for (let i = 0; i < cartItems.length; i++) {
+            cartItems[i].inStock ? t += cartItems[i].price * cartItems[i].qty : 0
         }
 
         setTotal(t)
@@ -90,83 +98,168 @@ export default function Cart() {
         localStorage.setItem("cart", JSON.stringify(cart))
     }
 
+    async function goToMP() {
+        const response = await fetch("https://proyectou8.vercel.app/api/mpcheckout", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            mode: "cors",
+            body: JSON.stringify({
+                title: "Total",
+                unit_price: total + (cartItems.length > 0 ? 15 : 0),
+                quantity: 1
+            })
+        })
+
+        const dataUrl = await response.json()
+        setUrl(dataUrl.url)
+    }
 
     return (
-        <>
+        <div>
             <Head>
                 <title>Pago</title>
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"></link>
             </Head>
             {
-                isEmpty ? <Title>No hay productos agregados</Title> :
+                isEmpty ?
+                    <div className="d-flex justify-content-between p-4">
+                        <Title>No hay productos agregados</Title>
+                        <Link href="/products">
+                            <Button className="btn btn-info  border">Productos</Button>
+                        </Link>
+                    </div> :
                     <div className="container-fluid">
-                        <h1 className="d-flex justify-content-between p-4">Carrito de compras</h1>
-                        <div className="row mt-5 flex flex-center">
-                            <div className="col-md-6"
-                                style={{
-                                    width: "40%"
-                                }}>
-                                <h2>Pago</h2>
-                                <hr />
-                                <div id="cardPaymentBrick_container"></div>
-                            </div>
-                            <div className="col-md-6" style={{
-                                width: "40%"
-                            }}>
+                        <div className="d-flex justify-content-between p-4">
+                            <h1>DITECCAP</h1>
+                            <Link href="/products">
+                                <Button className="btn btn-info  border">Productos</Button>
+                            </Link>
+                        </div>
+                        <div className="flex container-md justify-content-center flex-wrap">
+                            <div className="col-lg-8 col-sm-12 px-4">
                                 <h2>Productos pedidos</h2>
                                 <hr />
                                 {cartItems.map(item => (item.inStock ?
-                                    <div className="card mb-3">
-                                        <div className="card-body">
-                                            <div className="row">
-                                                <div className="col-6">
-                                                    <h4>{item.name}</h4>
-                                                </div>
-                                                <div className="col-3">
+                                    <div className="card mb-3 border " key={item.id}>
+                                        <div className="row g-0">
+                                            <div className="w-25 flex justify-content-center">
+                                                <Image className="img-fluid rounded-start"
+                                                    src={products[products.findIndex(product => product.id === item.id)].imageSrc}
+                                                    alt={products[products.findIndex(product => product.id === item.id)].imageAlt}
+                                                    width={100}
+                                                    height={100}
+                                                />
+                                            </div>
+                                            <div className="w-75">
+                                                <div className="card-body">
+                                                    <div className="flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <h4 className="mb-0">{item.name}</h4>
+                                                        </div>
+                                                        <div>
+                                                            <button className="border border-0 fs-5" onClick={() => removeItem(item.id)}>
+                                                                <FontAwesomeIcon icon={faTrash} />
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                     <h4>{item.currency} {item.price}</h4>
+                                                    <p>Cantidad: {item.qty}</p>
                                                 </div>
-                                                <div className="col-3">
-                                                    <h4>x {item.qty}</h4>
-                                                </div>
-                                                <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
                                             </div>
                                         </div>
                                     </div>
                                     :
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <div className="row">
-                                                <div className="col-6">
-                                                    <p>{item.name} no está disponible en nuestro stock</p>
+                                    <div className="card mb-3 border" key={item.id}>
+                                        <div className="row g-0">
+                                            <div className="w-25 flex justify-content-center">
+                                                <Image className="img-fluid rounded-start"
+                                                    src={products[products.findIndex(product => product.id === item.id)].imageSrc}
+                                                    alt={products[products.findIndex(product => product.id === item.id)].imageAlt}
+                                                    width={100}
+                                                    height={100}
+                                                />
+                                            </div>
+                                            <div className="w-75">
+                                                <div className="card-body">
+                                                    <div className="flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <h4 className="mb-0">{item.name}</h4> <p>no está disponible en nuestro stock</p>
+                                                        </div>
+                                                        <div>
+                                                            <button className="border border-0 fs-5" onClick={() => removeItem(item.id)}>
+                                                                <FontAwesomeIcon icon={faTrash} />
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
 
                                 )
                                 )
                                 }
-                                <div className="card">
+
+                            </div>
+                            <div className="col-lg-4 col-sm-12 px-4">
+                                <h2>Resumen</h2>
+                                <hr />
+                                <div className="card mb-3 border border-0">
                                     <div className="card-body">
-                                        <div className="row">
-                                            <div className="col-6">
-                                                <h3>Total</h3>
+                                        <div className="flex align-items-center justify-space-between">
+                                            <div className="col-8">
+                                                <p className="fw-normal fs-5">Subtotal</p>
                                             </div>
                                             <div
-                                                className="col-6"
+                                                className="col-4"
                                                 style={{
                                                     textAlign: "right",
                                                 }}
                                             >
-                                                <h3>{total}</h3>
+                                                <p className="fw-normal fs-5">S/. {total}</p>
                                             </div>
                                         </div>
+                                        <div className="flex align-items-center justify-space-between">
+                                            <div className="col-8">
+                                                <p className="fw-normal fs-5">Envío</p>
+                                            </div>
+                                            <div
+                                                className="col-4"
+                                                style={{
+                                                    textAlign: "right",
+                                                }}
+                                            >
+                                                <p className="fw-normal fs-5">S/. {cartItems.length > 0 ? 15 : 0}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex align-items-center justify-space-between">
+                                            <div className="col-8">
+                                                <p className="fw-semibold fs-5 mb-0">Total a pagar</p>
+                                            </div>
+                                            <div
+                                                className="col-4"
+                                                style={{
+                                                    textAlign: "right",
+                                                }}
+                                            >
+                                                <p className="fw-semibold fs-5 mb-0">S/. {total + (cartItems.length > 0 ? 15 : 0)}</p>
+                                            </div>
+                                        </div>
+                                        
+                                            <button className="btn btn-warning mt-4 w-100 fs-4" onClick={goToMP}>
+                                                <Link href={url}>
+                                                Pagar
+                                                </Link>
+                                                </button>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-            }         
-        </>
+            }
+        </div>
     )
 }
