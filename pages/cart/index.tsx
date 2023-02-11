@@ -143,8 +143,8 @@ export default function Cart() {
                                 {cartItems.map(item => (item.inStock ?
                                     <div className="card mb-3 border " key={item.id}>
                                         <div className="row g-0">
-                                            <div className="w-25 flex justify-content-center">
-                                                <Image className="img-fluid rounded-start"
+                                            <div className="w-25 flex justify-content-center align-items-center">
+                                                <Image className="rounded"
                                                     src={products[products.findIndex(product => product.id === item.id)].imageSrc}
                                                     alt={products[products.findIndex(product => product.id === item.id)].imageAlt}
                                                     width={100}

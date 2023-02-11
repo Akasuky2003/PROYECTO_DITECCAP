@@ -1,35 +1,35 @@
 const products = [
   {
     id: 1,
-    name: "Producto 1",
+    name: "Protector de celular",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 10,
+      "/images/p1.jpeg",
+    imageAlt: "Protector de celular",
+    price: 15,
     currency: "S/",
     color: 'Black',
     stock: 10
   },
   {
     id: 2,
-    name: "Producto 2",
+    name: "Polera amarilla",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 20,
+      "/images/p2.jpeg",
+    imageAlt: "Polera amarilla",
+    price: 30,
     currency: "S/",
     color: 'Black',
     stock: 10
   },
   {
     id: 3,
-    name: "Producto 3",
+    name: "Polera blanca",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
+      "/images/p3.jpeg",
+    imageAlt: "Polera blanca",
     price: 30,
     currency: "S/",
     color: 'Black',
@@ -37,36 +37,36 @@ const products = [
   },
   {
     id: 4,
-    name: "Producto 4",
+    name: "Poster decorativo",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 40,
+      "/images/p4.jpeg",
+    imageAlt: "Poster decorativo",
+    price: 10,
     currency: "S/",
     color: 'Black',
     stock: 10
   },
   {
     id: 5,
-    name: "Producto 5",
+    name: "Polo para niñas",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 50,
+      "/images/p5.jpg",
+    imageAlt: "Polo para niñas",
+    price: 30,
     currency: "S/",
     color: 'Black',
     stock: 10
   },
   {
     id: 6,
-    name: "Producto 6",
+    name: "Calendario 2023",
     href: '#',
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 60,
+      "/images/p6.jpg",
+    imageAlt: "Calendario 2023",
+    price: 20,
     currency: "S/",
     color: 'Black',
     stock: 10
