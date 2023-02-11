@@ -99,7 +99,7 @@ export default function Cart() {
     }
 
     async function goToMP() {
-        const response = await fetch("https://proyectou8.vercel.app/api/mpcheckout", {
+        const response = await fetch("https://proyecto-diteccap.vercel.app/api/mpcheckout", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
