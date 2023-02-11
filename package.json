@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browser": {
+    "tls": false,
+    "net": false,
+    "fs": false
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.3.0",
     "@fortawesome/free-solid-svg-icons": "6.3.0",
@@ -24,6 +29,7 @@
     "@types/react-dom": "18.0.10",
     "dotenv": "16.0.3",
     "mercadopago": "1.5.14",
+    "net": "1.0.2",
     "next": "13.1.6",
     "nextjs-cors": "2.1.2",
     "react": "18.2.0",
