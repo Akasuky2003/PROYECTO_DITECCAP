@@ -7,7 +7,7 @@ const products = [
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 10,
-    currency: "$",
+    currency: "S/",
     color: 'Black',
     stock: 10
   },
@@ -19,7 +19,7 @@ const products = [
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 20,
-    currency: "$",
+    currency: "S/",
     color: 'Black',
     stock: 10
   },
@@ -31,7 +31,7 @@ const products = [
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 30,
-    currency: "$",
+    currency: "S/",
     color: 'Black',
     stock: 0
   },
@@ -43,7 +43,7 @@ const products = [
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 40,
-    currency: "$",
+    currency: "S/",
     color: 'Black',
     stock: 10
   },
@@ -55,7 +55,7 @@ const products = [
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 50,
-    currency: "$",
+    currency: "S/",
     color: 'Black',
     stock: 10
   },
@@ -67,7 +67,7 @@ const products = [
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 60,
-    currency: "$",
+    currency: "S/",
     color: 'Black',
     stock: 10
   },
