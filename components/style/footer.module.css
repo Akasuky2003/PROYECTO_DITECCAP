@@ -1,0 +1,28 @@
+.container {
+   position: relative;
+ }
+ 
+ .footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: bisque;
+    width: 100%;
+    height: auto; /* tamaño del footer */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+ 
+ .titulofooter {
+    font-size: 20px;
+    padding-bottom: 5%;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    text-align: center;
+ }
+    
+    
+    
+    

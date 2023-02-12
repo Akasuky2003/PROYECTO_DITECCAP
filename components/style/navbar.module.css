@@ -1,0 +1,84 @@
+.navbar {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: bisque;
+  padding: 20px;
+}
+.DITECCAP {
+  width: 10%;
+  font-family: 'Lateef';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 6vw;
+  line-height: 87px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  max-width: 10px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.navlinks{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style-type: none;
+  text-align: right;
+}
+.navitem {
+  display: inline-block;
+  margin: 0 0px;
+}
+
+.navitem a {
+  list-style-type: none;
+  text-decoration: none;
+  display: block;
+  font-size: 1.5vw;
+  color: #000;
+  transition: transform 0.3s;
+}
+.navitem a:hover {
+  transform: scale(1.05);
+  color: white;
+}
+.textnabvar {
+  list-style-type: none;
+  color: #000000;
+  font-family: 'Lateef';
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 1.5vw;
+}
+.textnabvar:hover {
+  color: white;
+}
+.navitemcart{
+  width: 5%;
+}
+.imgcart{
+  width: 25%;
+}
+.imgbutton{
+  width: 80%;
+}
+.imgbutton:hover{
+  fill: rgb(227, 0, 0);
+}
+@media (max-width: 600px) {
+  .DITECCAP {
+    font-size: 4vw;
+  }
+  .nav-links {
+      display: none;
+  }
+  
+  .navbar {
+      padding: 10px;
+  }
+  .navitem a
+  {
+    font-size: 3vw;
+  }
+}
