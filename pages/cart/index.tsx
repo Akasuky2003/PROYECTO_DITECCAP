@@ -8,6 +8,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import products from "@/services/products";
 import dynamic from "next/dynamic";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 
 const Title = dynamic(() => import("../../components/Title"))
@@ -121,6 +123,7 @@ export default function Cart() {
             <Head>
                 <title>Pago</title>
             </Head>
+            <Navbar/>
             {
                 isEmpty ?
                     <div className="d-flex justify-content-between p-4">
@@ -130,12 +133,6 @@ export default function Cart() {
                         </Link>
                     </div> :
                     <div className="container-fluid">
-                        <div className="d-flex justify-content-between p-4">
-                            <h1>DITECCAP</h1>
-                            <Link href="/products">
-                                <Button className="btn btn-info  border">Productos</Button>
-                            </Link>
-                        </div>
                         <div className="flex container-md justify-content-center flex-wrap">
                             <div className="col-lg-8 col-sm-12 px-4">
                                 <h2>Productos pedidos</h2>
@@ -260,6 +257,8 @@ export default function Cart() {
                         </div>
                     </div>
             }
+             <Footer/>
         </div>
+       
     )
 }

@@ -1,28 +1,36 @@
 import Link from "next/link";
-import styles from "@/styles/Home.module.css";
+import React from "react";
+import styles from "../components/style/navbar.module.css"
 export default function Navbar() {
   return (
     <div className={styles.navbar}>
-      <Link legacyBehavior href={"/"}>
-        <a className={styles.DITECCAP}>DITECCAP</a>
-      </Link>
-      <Link legacyBehavior href={"/signin"}>
-        <a className={styles.ingresobutton}>login</a>
-      </Link>
-
+  <Link legacyBehavior href={"/"}>
+    <a className={styles.DITECCAP}>DITECCAP</a>
+  </Link>
+  <ul className={styles.navlinks}>
+    <li className={styles.navitem}>
       <Link legacyBehavior href={"/about"}>
-        <a className={styles.quienessomos} style={{ marginLeft: "60px" }}>
+        <a className={styles.textnabvar}>
           ¿Quienes Somos?
         </a>
       </Link>
+    </li>
+    <li className={styles.navitem}>
       <Link legacyBehavior href="/products">
-        <a className={styles.productos}>Productos</a>
+        <a className={styles.textnabvar}>Productos</a>
       </Link>
-      <Link legacyBehavior href={"/index"}>
-        <a className={styles.contactanos} style={{ marginLeft: "40px" }}>
-          Contactanos
-        </a>
+    </li>
+    <li className={styles.navitem}>
+      <Link legacyBehavior href={"/signin"}>
+        <a className={styles.textnabvar}>login</a>
       </Link>
-    </div>
+    </li>
+    <li className={styles.navitemcart}>
+      <Link legacyBehavior href={"/cart"}>
+      <a className={styles.imgcart}><img src="/cart-shopping-solid.svg" alt="Image" className={styles.imgbutton} /></a>
+      </Link>
+    </li>
+  </ul>
+</div>
   );
 }
